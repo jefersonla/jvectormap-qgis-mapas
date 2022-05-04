@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>Bahia demo</title>
-  <link rel="stylesheet" href="jquery-jvectormap.css" type="text/css" media="screen"/>
-  <script src="jquery-3.6.0.js"></script>
-  <script src="jquery.jvectormap.min.js"></script>
-  <script src="public/bahia_mesorregiao.js"></script>
+  <link rel="stylesheet" href="public/lib/jquery-jvectormap.css" type="text/css" media="screen"/>
+  <script src="public/lib/jquery-3.6.0.js"></script>
+  <script src="public/lib/jquery.jvectormap.min.js"></script>
+  <script src="public/maps/bahia_mesorregiao.js"></script>
 </head>
 <body>
   <h1>Mapa da Bahia
@@ -13,7 +13,7 @@
   <div id="bahia" style="width: 800px; height: 600px"></div>
   <script>
     $(function(){
-      fetch('dados/dados-initial.json')
+      fetch('public/dados-initial.json')
       .then(response => response.json())
       .then(data => 
         new jvm.MultiMap({
@@ -21,7 +21,7 @@
           maxLevel: 1,
           mapUrlByCode: function(code, multiMap){
             // Retorna localização do submapa correspondente
-            return 'public/bahia-microrregiao-'+code.toLowerCase()+'-'+multiMap.defaultProjection+'.js';
+            return 'public/maps/bahia-microrregiao-'+code.toLowerCase()+'-'+multiMap.defaultProjection+'.js';
           },
           backButtonText: "Voltar",
           main: {
